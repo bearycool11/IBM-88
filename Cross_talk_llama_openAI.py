@@ -8,7 +8,8 @@ logging.basicConfig(filename='pmll_cross_talk.log', level=logging.INFO)
 
 # Define the API keys
 LLAMA_API_KEY = "LA-8c4003a74c5040b2b735866f22e754ed55c2ab712b0346b3bca0f1993362704a"
-OPENAI_API_KEY = ""
+OPENAI_API_KEY = "sk-proj-
+JvOfpMYikesYXuIi32gMuyoyamYwAkx6O3PiDFNwSlIsLZCQ9LEFwu_6vjDiQ6KQ4r6dW_hmSgT3BlbkFJshH4vDAndi1Nh3vuN5fzielvukMjHsHyxaKp1AQQuTMSPeE7pI-FbpFCeeGPIRphVvGWFtKV0A"
 
 # Define the API endpoints
 LLAMA_API_URL = "https://api.llama.ai/v1/chat"
