@@ -1,0 +1,120 @@
+{  
+  "$schema": "http://json-schema.org/draft-07/schema#",  
+  "title": "Adaptive Memory Architecture (AMA) Schema",  
+  "description": "Schema for memory items and relationships in the Adaptive Memory Architecture system.",  
+  "type": "object",  
+  "required": ["memory_items", "memory_tiers", "context_settings"],  
+  "properties": {  
+    "memory_items": {  
+      "type": "array",  
+      "description": "List of individual memory items maintained by the system.",  
+      "items": {  
+        "type": "object",  
+        "required": ["id", "content", "semantic_embedding", "metadata", "relationships"],  
+        "properties": {  
+          "id": {  
+            "type": "string",  
+            "description": "Unique identifier for the memory item."  
+          },  
+          "content": {  
+            "type": "string",  
+            "description": "Main textual content or information stored in this memory item."  
+          },  
+          "semantic_embedding": {  
+            "type": "array",  
+            "description": "Semantic embedding vector for the content.",  
+            "items": {  
+              "type": "number"  
+            }  
+          },  
+          "metadata": {  
+            "type": "object",  
+            "description": "Additional metadata associated with this memory item.",  
+            "properties": {  
+              "timestamp": {  
+                "type": "string",  
+                "format": "date-time",  
+                "description": "Timestamp when the memory item was created or added."  
+              },  
+              "source": {  
+                "type": "string",  
+                "description": "Origin or source of the memory item (e.g., user input, external file)."  
+              },  
+              "language": {  
+                "type": "string",  
+                "description": "Language of the content (e.g., 'en' for English)."  
+              },  
+              "confidence_score": {  
+                "type": "number",  
+                "description": "Confidence score for the accuracy or relevance of this memory item.",  
+                "minimum": 0,  
+                "maximum": 1  
+              }  
+            }  
+          },  
+          "relationships": {  
+            "type": "array",  
+            "description": "List of relationships this memory item has with others.",  
+            "items": {  
+              "type": "object",  
+              "required": ["related_to", "relationship_type"],  
+              "properties": {  
+                "related_to": {  
+                  "type": "string",  
+                  "description": "ID of the memory item this relation links to."  
+                },  
+                "relationship_type": {  
+                  "type": "string",  
+                  "description": "Type of relationship (e.g., 'similar_to', 'derives_from', 'contradicts', 'supports')."  
+                }  
+              }  
+            }  
+          }  
+        }  
+      }  
+    },  
+    "memory_tiers": {  
+      "type": "array",  
+      "description": "Definition of memory tiers within the system.",  
+      "items": {  
+        "type": "object",  
+        "required": ["tier_name", "capacity", "pruning_strategy"],  
+        "properties": {  
+          "tier_name": {  
+            "type": "string",  
+            "description": "Name of the memory tier (e.g., 'short-term', 'long-term', 'context-memory')."  
+          },  
+          "capacity": {  
+            "type": "integer",  
+            "description": "Maximum number of memory items this tier can hold."  
+          },  
+          "pruning_strategy": {  
+            "type": "string",  
+            "description": "Strategy used for removing or pruning items when capacity is reached."  
+          }
+        }  
+      }  
+    },
+    "context_settings": {  
+      "type": "object",  
+      "description": "Configuration settings for contextual operations within the AMA system.",  
+      "properties": {  
+        "context_window_size": {  
+          "type": "integer",  
+          "description": "Maximum number of memory items to consider in the active context window."  
+        },  
+        "relevance_threshold": {  
+          "type": "number",  
+          "description": "Minimum relevance score required for a memory item to be included in context.",  
+          "minimum": 0,  
+          "maximum": 1  
+        },  
+        "retrieval_strategy": {  
+          "type": "string",  
+          "description": "Strategy used for retrieving relevant memory items (e.g., 'semantic_similarity', 'recency_weighted')."  
+        }  
+      },  
+      "required": ["context_window_size", "relevance_threshold", "retrieval_strategy"]  
+    }  
+  }  
+}

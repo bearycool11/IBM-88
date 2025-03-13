@@ -1,5 +1,13 @@
-name: Python Package using Conda
-
+name: myenv
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - flake8
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
 on: [push]
 
 jobs:
