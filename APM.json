@@ -90,4 +90,31 @@
           },  
           "pruning_strategy": {  
             "type": "string",  
-            "description
+            "description": "Strategy used for removing or pruning items when capacity is reached."  
+          }
+        }  
+      }  
+    },
+    "context_settings": {  
+      "type": "object",  
+      "description": "Configuration settings for contextual operations within the AMA system.",  
+      "properties": {  
+        "context_window_size": {  
+          "type": "integer",  
+          "description": "Maximum number of memory items to consider in the active context window."  
+        },  
+        "relevance_threshold": {  
+          "type": "number",  
+          "description": "Minimum relevance score required for a memory item to be included in context.",  
+          "minimum": 0,  
+          "maximum": 1  
+        },  
+        "retrieval_strategy": {  
+          "type": "string",  
+          "description": "Strategy used for retrieving relevant memory items (e.g., 'semantic_similarity', 'recency_weighted')."  
+        }  
+      },  
+      "required": ["context_window_size", "relevance_threshold", "retrieval_strategy"]  
+    }  
+  }  
+}
